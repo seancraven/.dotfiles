@@ -33,6 +33,7 @@ client.unfocused         $overlay0 $base $text  $rosewater $overlay0
 client.urgent            $peach    $base $peach $overlay0  $peach
 client.placeholder       $overlay0 $base $text  $overlay0  $overlay0
 client.background        $base
+
 bar {
   position top
   font pango: FiraCodeNerdFontMono
@@ -201,30 +202,26 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 ### Display layout
-bindsym $alt-mod+1 exec --no-startup-id ~/.screenlayout/single_dp.sh && feh --bg-max ~/Pictures/night.jpg
-bindsym $alt-mod+2 exec --no-startup-id ~/.screenlayout/single_edp.sh && feh --bg-max ~/Pictures/night.jpg
-bindsym $alt-mod+3 exec --no-startup-id ~/.screenlayout/double_left.sh && feh --bg-max ~/Pictures/night.jpg
-bindsym $alt-mod+4 exec --no-startup-id ~/.screenlayout/double_right.sh && feh --bg-max ~/Pictures/night.jpg
+bindsym $alt-mod+1 exec --no-startup-id ~/.config/i3/single_dp.sh && feh --bg-max ~/Pictures/night.jpg
+bindsym $alt-mod+2 exec --no-startup-id ~/.config/i3/single_edp.sh && feh --bg-max ~/Pictures/night.jpg
+bindsym $alt-mod+3 exec --no-startup-id ~/.config/i3/double_left.sh && feh --bg-max ~/Pictures/night.jpg
+bindsym $alt-mod+4 exec --no-startup-id ~/.config/i3/double_right.sh && feh --bg-max ~/Pictures/night.jpg
 
 gaps inner 2 
 gaps outer 2
 
-set $ytmusic ="crx_cinhimbnkkaeohfgghhklpknlkffjgod"
-set $whatsapp ="crx_hnpfjngllnobngcgfapefoaidbinmjnm"
 
 assign [class="Kitty"] $ws1
 #ytmusic
-assign [class="Google-chrome" instance=$ytmusic] $ws4
+assign [class="Google-chrome" instance="crx_cinhimbnkkaeohfgghhklpknlkffjgod"] $ws4
 #whatsapp
-assign [class="Google-chrome" instance=$whatsapp] $ws5
+assign [class="Google-chrome" instance="crx_hnpfjngllnobngcgfapefoaidbinmjnm"] $ws5
 assign [class="Google-chrome"] $ws2
 assign [class="Slack"] $ws4
 assign [class="Caprine"] $ws5
 
 
-# Start i3bar to display a workspace bar (plus the system information i3status# finds out, if available)
 exec_always --no-startup-id bash ~/.config/i3/keyboard.sh
-# exec_always --no-startup-id bash ~/.config/polybar/launch.sh
 exec_always --no-startup-id feh --bg-max ~/Pictures/night.jpg
 exec --no-startup-id bash ~/.config/i3/picom.sh
 for_window [class="^.*"] border pixel 0
