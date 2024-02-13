@@ -15,8 +15,8 @@ export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.pyenv/bin:$PATH"
 export PATH="$HOME/.local/share/bob/nvim-bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
-eval "$(pyenv init --path)"
-eval "$(pyenv virtualenv-init -)"
+# eval "$(pyenv init --path)"
+# eval "$(pyenv virtualenv-init -)"
 
 
 # Set name of the theme to load --- if set to "random", it will
@@ -123,15 +123,28 @@ alias alacrittyconfig="cd ~/.config/alacritty/ && nvim alacritty.yml"
 alias polybarconfig="cd ~/.config/polybar/ && nvim config.ini"
 alias pos="poetry shell"
 alias pa="source ./.venv/bin/activate"
-alias screen_off="xrandr --output eDP-1 --off && nitrogen --restore"
 alias pt="poetry run pytest"
+alias ut="python -m unittest discover -p 'test_*.py' -s test"
 
 eval "$(starship init zsh)"
 alias sshfs_sean="sshfs -o allow_other,default_permissions sean@cravenpc.duckdns.org:/home/sean/ms_mono/ ./"
 alias mux="tmuxinator"
 
-
-
-if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
-  exec tmux
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/sean/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/sean/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/sean/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/sean/miniconda3/bin:$PATH"
+    fi
 fi
+unset __conda_setup
+
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
