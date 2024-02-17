@@ -1,7 +1,7 @@
 # /home/sean/.config/tmuxinator/dates.yml
 
 name: dates
-root: ~/dates
+root: ~/date-rs
 
 # Optional tmux socket
 # socket_name: foo
