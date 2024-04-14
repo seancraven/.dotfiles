@@ -8,6 +8,7 @@ local config = wezterm.config_builder()
 
 -- For example, changing the color scheme:
 config.font_size = 18
+config.font = wezterm.font('JetBrains Mono', { weight = "DemiBold" })
 config.color_scheme = 'tokyonight-storm'
 
 -- and finally, return the configuration to wezterm
