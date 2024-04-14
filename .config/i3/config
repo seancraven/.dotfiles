@@ -74,7 +74,7 @@ font pango: FiraCodeNerdFontMono-SemiBold
 floating_modifier $mod
 
 # start a $ws1inal
-bindsym $mod+Return exec kitty
+bindsym $mod+Return exec wezterm
 
 # Screenshot
 bindsym Print exec flameshot gui
@@ -88,7 +88,6 @@ bindsym $mod+q kill
 
 bindsym $mod+d exec --no-startup-id ~/.config/rofi/launchers/type-7/launcher.sh
 bindsym $mod+x exec --no-startup-id ~/.config/rofi/powermenu/type-6/powermenu.sh
-
 # change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
@@ -211,7 +210,7 @@ gaps inner 2
 gaps outer 2
 
 
-assign [class="Kitty"] $ws1
+assign [class="Wezterm"] $ws1
 #ytmusic
 assign [class="Google-chrome" instance="crx_cinhimbnkkaeohfgghhklpknlkffjgod"] $ws4
 #whatsapp
@@ -228,7 +227,7 @@ for_window [class="^.*"] border pixel 0
 
 
 ## Default startupbehaviour
-exec kitty
+exec wezterm
 exec google-chrome
 exec --no-startup-id google-chrome --app-id=cinhimbnkkaeohfgghhklpknlkffjgod
 exec --no-startup-id google-chrome --app-id=hnpfjngllnobngcgfapefoaidbinmjnm
