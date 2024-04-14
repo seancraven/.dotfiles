@@ -125,9 +125,10 @@ alias pos="poetry shell"
 alias pa="source ./.venv/bin/activate"
 alias pt="poetry run pytest"
 alias ut="python -m unittest discover -p 'test_*.py' -s test"
+alias gg="lazygit"
+alias nt="cargo nextest run"
 
 eval "$(starship init zsh)"
-alias sshfs_sean="sshfs -o allow_other,default_permissions sean@cravenpc.duckdns.org:/home/sean/ms_mono/ ./"
 alias mux="tmuxinator"
 
 # >>> conda initialize >>>
@@ -137,9 +138,9 @@ if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
     if [ -f "/home/sean/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/sean/miniconda3/etc/profile.d/conda.sh"
+# . "/home/sean/miniconda3/etc/profile.d/conda.sh"  # commented out by conda initialize
     else
-        export PATH="/home/sean/miniconda3/bin:$PATH"
+# export PATH="/home/sean/miniconda3/bin:$PATH"  # commented out by conda initialize
     fi
 fi
 unset __conda_setup
