@@ -127,9 +127,11 @@ alias pt="poetry run pytest"
 alias ut="python -m unittest discover -p 'test_*.py' -s test"
 alias gg="lazygit"
 alias nt="cargo nextest run"
+alias mux="tmuxinator"
+export VPN="$HOME/openvpn_sean_craven.ovpn"
+
 
 eval "$(starship init zsh)"
-alias mux="tmuxinator"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
