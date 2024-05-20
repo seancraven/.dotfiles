@@ -201,35 +201,27 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 ### Display layout
-bindsym $alt-mod+1 exec --no-startup-id ~/.config/i3/single_dp.sh && feh --bg-max ~/Pictures/night.jpg
-bindsym $alt-mod+2 exec --no-startup-id ~/.config/i3/single_edp.sh && feh --bg-max ~/Pictures/night.jpg
-bindsym $alt-mod+3 exec --no-startup-id ~/.config/i3/double_left.sh && feh --bg-max ~/Pictures/night.jpg
-bindsym $alt-mod+4 exec --no-startup-id ~/.config/i3/double_right.sh && feh --bg-max ~/Pictures/night.jpg
+bindsym $alt-mod+1 exec --no-startup-id ~/.config/i3/single_dp.sh && feh --bg-max ~/Pictures/night.png
+bindsym $alt-mod+2 exec --no-startup-id ~/.config/i3/single_edp.sh && feh --bg-max ~/Pictures/night.png
+bindsym $alt-mod+3 exec --no-startup-id ~/.config/i3/double_left.sh && feh --bg-max ~/Pictures/night.png
+bindsym $alt-mod+4 exec --no-startup-id ~/.config/i3/double_right.sh && feh --bg-max ~/Pictures/night.png
 
-gaps inner 2 
-gaps outer 2
+bindsym $alt-mod+l exec --no-startup-id "i3lock -i ~/Pictures/night.png"
 
 
-assign [class="Wezterm"] $ws1
-#ytmusic
-assign [class="Google-chrome" instance="crx_cinhimbnkkaeohfgghhklpknlkffjgod"] $ws4
-#whatsapp
-assign [class="Google-chrome" instance="crx_hnpfjngllnobngcgfapefoaidbinmjnm"] $ws5
+gaps inner 4 
+gaps outer 4
+
+assign [class="org.wezfurlong.wezterm"] $ws1
 assign [class="Google-chrome"] $ws2
-assign [class="Slack"] $ws4
-assign [class="Caprine"] $ws5
+assign [class="Microsoft-edge"] $ws5
 
 
 exec_always --no-startup-id bash ~/.config/i3/keyboard.sh
-exec_always --no-startup-id feh --bg-max ~/Pictures/night.jpg
-exec --no-startup-id bash ~/.config/i3/picom.sh
-for_window [class="^.*"] border pixel 0
+exec_always --no-startup-id feh --bg-max ~/Pictures/night.png
+for_window [class="^.*"] border pixel 5
 
 
 ## Default startupbehaviour
-exec wezterm
-exec google-chrome
-exec --no-startup-id google-chrome --app-id=cinhimbnkkaeohfgghhklpknlkffjgod
-exec --no-startup-id google-chrome --app-id=hnpfjngllnobngcgfapefoaidbinmjnm
-exec --no-startup-id caprine
-
+exec --no-startup-id wezterm
+exec --no-startup-id google-chrome
