@@ -36,7 +36,7 @@ markup=none
 # See the script for details.
 
 [volume]
-label=
+label=   
 # label=VOL
 interval=once
 signal=10
@@ -44,9 +44,9 @@ signal=10
 
 # Memory usage
 #
-# The type defaults to "mem" if the instance is not specified.
+# The type defaults to mem if the instance is not specified.
 [memory]
-label=
+label=   
 separator=false
 interval=30
 
@@ -56,7 +56,7 @@ interval=30
 # The script may be called with a optional argument to set the alert
 # (defaults to 10 for 10%).
 [disk]
-label=󰋊
+label=󰋊   
 #DIR=/mnt/data
 interval=30
 
@@ -85,14 +85,14 @@ interval=5
 # The script may be called with -w and -c switches to specify thresholds,
 # see the script for details.
 [cpu_usage]
-label=
+label=  
 interval=10
 min_width= 100.00%
 #separator=false
 
 
 [battery]
-label=󰁹
+label=󰁹  
 interval=30
 
 # Date Time
@@ -103,7 +103,7 @@ interval=5
 
 # Generic media player support
 #
-# This displays "ARTIST - SONG" if a music is playing.
+# This displays ARTIST - SONG if a music is playing.
 # Supported players are: spotify, vlc, audacious, xmms2, mplayer, and others.
 # Set to %any to automatically pick (Requires playerctl >=2.1.1)
 #[mediaplayer]
