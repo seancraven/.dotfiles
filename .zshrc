@@ -103,6 +103,9 @@ ZSH_THEME=""
 #   export EDITOR='mvim'
 # fi
 
+export EDITOR="nvim"
+export VPN="$HOME/.ovpn/openvpn_sean_craven.ovpn"
+export ACR="advairegistry01.azurecr.io"
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
@@ -128,11 +131,40 @@ alias ut="python -m unittest discover -p 'test_*.py' -s test"
 alias gg="lazygit"
 alias nt="cargo nextest run"
 alias mux="tmuxinator"
-export VPN="$HOME/openvpn_sean_craven.ovpn"
+alias vpn_up="openvpn3 session-start --config $VPN"
+alias cat="bat --plain"
 
+source <(fzf --zsh)
 
-eval "$(starship init zsh)"
+# Options to fzf command
+export FZF_COMPLETION_OPTS='--border --info=inline'
 
+# Use fd (https://github.com/sharkdp/fd) for listing path candidates.
+# - The first argument to the function ($1) is the base path to start traversal
+# - See the source code (completion.{bash,zsh}) for the details.
+_fzf_compgen_path() {
+  fd --hidden --follow --exclude ".git" . "$1"
+}
+
+# Use fd to generate the list for directory completion
+_fzf_compgen_dir() {
+  fd --type d --hidden --follow --exclude ".git" . "$1"
+}
+
+# Advanced customization of fzf options via _fzf_comprun function
+# - The first argument to the function is the name of the command.
+# - You should make sure to pass the rest of the arguments to fzf.
+_fzf_comprun() {
+  local command=$1
+  shift
+
+  case "$command" in
+    cd)           fzf --preview 'tree -C {} | head -200'   "$@" ;;
+    export|unset) fzf --preview "eval 'echo \$'{}"         "$@" ;;
+    ssh)          fzf --preview 'dig {}'                   "$@" ;;
+    *)            fzf --preview 'bat -n --color=always {}' "$@" ;;
+  esac
+}
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/home/sean/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
@@ -151,3 +183,6 @@ unset __conda_setup
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+eval "$(starship init zsh)"
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

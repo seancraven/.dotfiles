@@ -206,15 +206,17 @@ bindsym $alt-mod+2 exec --no-startup-id ~/.config/i3/single_edp.sh && feh --bg-m
 bindsym $alt-mod+3 exec --no-startup-id ~/.config/i3/double_left.sh && feh --bg-max ~/Pictures/night.png
 bindsym $alt-mod+4 exec --no-startup-id ~/.config/i3/double_right.sh && feh --bg-max ~/Pictures/night.png
 
-bindsym $alt-mod+l exec --no-startup-id "i3lock -i ~/Pictures/night.png"
+bindsym $alt-mod+l exec --no-startup-id "i3lock -i $HOME/Pictures/night.png"
 
 
 gaps inner 4 
 gaps outer 4
 
 assign [class="org.wezfurlong.wezterm"] $ws1
+assign [class="Google-chrome" instance="crx_cinhimbnkkaeohfgghhklpknlkffjgod"] $ws4
+assign [class="Google-chrome" instance="crx_faolnafnngnfdaknnbpnkhgohbobgegn"] $ws5
+assign [class="Google-chrome" instance="crx_cifhbcnohmdccbgoicgdjpfamggdegmo"] $ws5
 assign [class="Google-chrome"] $ws2
-assign [class="Microsoft-edge"] $ws5
 
 
 exec_always --no-startup-id bash ~/.config/i3/keyboard.sh
@@ -225,3 +227,9 @@ for_window [class="^.*"] border pixel 5
 ## Default startupbehaviour
 exec --no-startup-id wezterm
 exec --no-startup-id google-chrome
+# exec --no-startup-id google-chrome --app_id=cifhbcnohmdccbgoicgdjpfamggdegmo
+# exec --no-startup-id google-chrome --app_id=crx_cinhimbnkkaeohfgghhklpknlkffjgod
+# exec --no-startup-id google-chrome --app_id=faolnafnngnfdaknnbpnkhgohbobgegn
+exec_always --no-startup-id feh --bg-max ~/Pictures/night.jpg
+exec --no-startup-id bash ~/.config/i3/picom.sh
+for_window [class="^.*"] border pixel 4

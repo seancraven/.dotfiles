@@ -1,1 +1,1 @@
-picom --config ~/.config/picom/picom.conf
+picom --config ~/.config/picom/picom.conf --experimental-backend
