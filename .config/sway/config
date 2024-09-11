@@ -1,0 +1,231 @@
+## Cattpucin
+set $rosewater #f5e0dc
+set $flamingo  #f2cdcd
+set $pink      #f5c2e7
+set $mauve     #cba6f7
+set $red       #f38ba8
+set $maroon    #eba0ac
+set $peach     #fab387
+set $yellow    #f9e2af
+set $green     #a6e3a1
+set $teal      #94e2d5
+set $sky       #89dceb
+set $sapphire  #74c7ec
+set $blue      #89b4fa
+set $lavender  #b4befe
+set $text      #cdd6f4
+set $subtext1  #bac2de
+set $subtext0  #a6adc8
+set $overlay2  #9399b2
+set $overlay1  #7f849c
+set $overlay0  #6c7086
+set $surface2  #585b70
+set $surface1  #45475a
+set $surface0  #313244
+set $base      #1e1e2e
+set $mantle    #181825
+set $crust     #11111b
+
+# target                 title     bg    text   indicator  border
+client.focused           $lavender $base $text  $rosewater $lavender
+client.focused_inactive  $overlay0 $base $text  $rosewater $overlay0
+client.unfocused         $overlay0 $base $text  $rosewater $overlay0
+client.urgent            $peach    $base $peach $overlay0  $peach
+client.placeholder       $overlay0 $base $text  $overlay0  $overlay0
+client.background        $base
+
+bar {
+  position top
+  font pango: FiraCodeNerdFontMono
+    colors {
+    background         $base
+    statusline         $text
+    focused_statusline $text
+    active_workspace   $base $text $blue
+    focused_separator  $base
+    focused_workspace  $base $base $green
+    active_workspace   $base $base $blue
+    inactive_workspace $base $base $surface1
+    urgent_workspace   $base $base $surface1
+    binding_mode       $base $base $surface1
+  }
+  status_command SCRIPT_DIR=~/.config/i3blocks/ i3blocks
+
+}
+
+default_border pixel 0
+
+default_floating_border pixel 0
+# Should you change your keyboard layout some time, delete
+# this file and re-run i3-config-wizard(1).
+#
+
+# i3 config file (v4)
+#
+# Please see http://i3wm.org/docs/userguide.html for a complete reference!
+
+set $mod Mod1
+set $alt-mod Mod4
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# start a $ws1inal
+bindsym $mod+Return exec wezterm
+
+# Screenshot
+bindsym Prior exec grim -g "$(slurp)" - | wl-copy 
+bindsym $mod+Prior exec exec grim - | wl-copy   
+
+# kill focused window
+bindsym $mod+q kill
+
+
+bindsym $mod+d exec wofi --show drun
+# change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $mod+z split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# focus the child container
+#bindsym $mod+d focus child
+set $ws1 
+set $ws2 
+set $ws3 󰊯
+set $ws4 󰅷
+set $ws5 󰍡
+
+# switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1; workspace $ws1;
+bindsym $mod+Shift+2 move container to workspace $ws2; workspace $ws2;
+bindsym $mod+Shift+3 move container to workspace $ws3; workspace $ws3;
+bindsym $mod+Shift+4 move container to workspace $ws4; workspace $ws4;
+bindsym $mod+Shift+5 move container to workspace $ws5; workspace $ws5;
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+
+bindsym $mod+Shift+r reload
+
+bindsym $mod+Shift+e exec "swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'"
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym j resize shrink width 10 px or 10 ppt
+        bindsym k resize grow height 10 px or 10 ppt
+        bindsym l resize shrink height 10 px or 10 ppt
+        bindsym semicolon resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+
+}
+
+bindsym $mod+r mode "resize"
+bindsym $alt-mod+l exec swaylock -i ~/Pictures/night.jpg
+
+
+gaps inner 4
+gaps outer 4
+
+assign [app_id="org.wezfurlong.wezterm"] $ws1
+assign [app_id="firefox"] $ws2
+assign [app_id="org.mozilla.Thunderbird"] $ws4
+assign [class="teams-for-linux"] $ws5
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="Pop-up"] floating enable
+for_window [window_role="bubble"] floating enable
+for_window [window_role="Bubble"] floating enable
+for_window [window_role="dialog"] floating enable
+for_window [window_role="Dialog"] floating enable
+for_window [window_type="dialog"] floating enable
+for_window [window_type="Dialog"] floating enable
+for_window [class="dialog"] floating enable
+for_window [class="Dialog"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [window_type="menu"] floating enable
+for_window [window_role="About"] floating enable
+
+exec --no-startup-id wezterm
+exec --no-startup-id firefox
+exec --no-startup-id teams-for-linux
+exec --no-startup-id thunderbird
+exec_always pkill kanshi; exec kanshi
+
+
+
+default_border pixel 5
+input type:keyboard xkb_layout gb
+output * background ~/Pictures/night.jpg fill
+exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
+## Default startupbehaviour
