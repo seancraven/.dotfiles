@@ -1,0 +1,7 @@
+profile docked-home {
+  output 'AU Optronics 0xAB9B Unknown' disable
+  output 'Dell Inc. DELL P2720D H8FZS03'
+}
+profile laptop {
+  output 'AU Optronics 0xAB9B Unknown'
+}
