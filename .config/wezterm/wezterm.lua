@@ -43,7 +43,7 @@ config.font = wezterm.font("Agave Nerd Font", { weight = "DemiBold" })
 config.window_background_opacity = 0.9
 config.use_fancy_tab_bar = false
 config.status_update_interval = 1000
-config.tab_bar_at_bottom = true
+config.tab_bar_at_bottom = false
 config.leader = { key = "Space", mods = "CTRL", timeout_milliseconds = 1000 }
 config.color_scheme = "Tokyo Night Storm"
 
@@ -77,6 +77,7 @@ config.keys = {
 	split_nav("resize", "j"),
 	split_nav("resize", "k"),
 	split_nav("resize", "l"),
+	{ mods = "LEADER", key = "s", action = wezterm.action.ShowLauncher },
 }
 for l = 1, 8 do
 	table.insert(config.keys, { mods = "LEADER", key = tostring(l), action = wezterm.action.ActivateTab(l - 1) })
