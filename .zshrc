@@ -8,8 +8,8 @@ export SHELL="zsh"
 export EDITOR="nvim"
 
 
-export "$(cat $HOME/secret.env | xargs)"
-export "$(cat $HOME/.env | xargs)"
+source $HOME/secret.env
+source $HOME/.env 
 
 
 plugins=(git)
