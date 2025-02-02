@@ -38,7 +38,7 @@ local function split_nav(resize_or_move, key)
 	}
 end
 local config = wezterm.config_builder()
-config.font_size = 18
+config.font_size = 15
 config.font = wezterm.font("Agave Nerd Font", { weight = "DemiBold" })
 config.window_background_opacity = 0.9
 config.use_fancy_tab_bar = false
