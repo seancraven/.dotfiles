@@ -26,11 +26,12 @@ alias ut="python -m unittest discover -p 'test_*.py' -s test"
 alias gg="lazygit"
 alias nt="cargo nextest run"
 alias dc="docker compose"
+alias tf="terraform"
 export VPN="$HOME/openvpn_sean_craven.ovpn"
 
 
 eval "$(starship init zsh)"
-
+eval "$(zoxide init zsh --cmd cd)"
 
 export FZF_COMPLETION_OPTS='--border --info=inline'
 
