@@ -38,7 +38,7 @@ local function split_nav(resize_or_move, key)
 	}
 end
 local config = wezterm.config_builder()
-config.font_size = 15
+config.font_size = 18
 config.font = wezterm.font("Agave Nerd Font", { weight = "DemiBold" })
 config.window_background_opacity = 0.9
 config.use_fancy_tab_bar = false
@@ -48,25 +48,27 @@ config.color_scheme = "Tokyo Night Storm"
 
 -- This is where you actually apply your config choices
 
+config.leader = { key = "Super" }
+
 -- For example, changing the color scheme:
 config.keys = {
 	{
-		mods = "SUPER",
+		mods = "LEADER",
 		key = '"',
 		action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }),
 	},
 	{
-		mods = "SUPER",
+		mods = "LEADER",
 		key = "t",
 		action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }),
 	},
 	{
-		mods = "SUPER",
+		mods = "LEADER",
 		key = "Escape",
 		action = wezterm.action.ActivateCopyMode,
 	},
-	{ mods = "SUPER", key = "x", action = wezterm.action.CloseCurrentPane({ confirm = false }) },
-	{ mods = "SUPER", key = "c", action = wezterm.action.SpawnTab("CurrentPaneDomain") },
+	{ mods = "LEADER", key = "x", action = wezterm.action.CloseCurrentPane({ confirm = false }) },
+	{ mods = "LEADER", key = "c", action = wezterm.action.SpawnTab("CurrentPaneDomain") },
 	split_nav("move", "h"),
 	split_nav("move", "j"),
 	split_nav("move", "k"),
@@ -76,10 +78,10 @@ config.keys = {
 	split_nav("resize", "j"),
 	split_nav("resize", "k"),
 	split_nav("resize", "l"),
-	{ mods = "SUPER", key = "s", action = wezterm.action.ShowLauncher },
+	{ mods = "LEADER", key = "s", action = wezterm.action.ShowLauncher },
 }
 for l = 1, 8 do
-	table.insert(config.keys, { mods = "SUPER", key = tostring(l), action = wezterm.action.ActivateTab(l - 1) })
+	table.insert(config.keys, { mods = "LEADER", key = tostring(l), action = wezterm.action.ActivateTab(l - 1) })
 end
 
 wezterm.on("format-tab-title", tab.FormatTabTitle)

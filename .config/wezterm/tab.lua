@@ -12,7 +12,7 @@ function tab_title(tab_info)
 	end
 	-- Otherwise, use the title from the active pane
 	-- in that tab
-	return tab_info.active_pane.title .. tab_info.pane.nubmer
+	return tab_info.active_pane.title .. tab_info.active_pane.nubmer
 end
 
 function module.FormatTabTitle(tab, tabs, panes, config, hover, max_width)
@@ -49,4 +49,15 @@ function module.FormatTabTitle(tab, tabs, panes, config, hover, max_width)
 	}
 end
 
+function module.UpdateStatus(win, pane)
+	win:set_right_status(wezterm.format("Heelo"))
+	local date = wezterm.strftime("%Y-%m-%d %H:%M:%S")
+
+	-- Make it italic and underlined
+	win:set_right_status(wezterm.format({
+		{ Attribute = { Underline = "Single" } },
+		{ Attribute = { Italic = true } },
+		{ Text = "Hello " .. date },
+	}))
+end
 return module
